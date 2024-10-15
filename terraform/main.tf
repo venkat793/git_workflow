@@ -42,12 +42,3 @@ resource "aws_s3_bucket_versioning" "versioning_example" {
   }
 }
 
-# S3 Public Access Block
-resource "aws_s3_bucket_public_access_block" "block_example" {
-  bucket = aws_s3_bucket.my_bucket_1306.id
-
-  block_public_acls       = true
-  block_public_policy     = true
-  ignore_public_acls      = true
-  restrict_public_buckets = true
-}
