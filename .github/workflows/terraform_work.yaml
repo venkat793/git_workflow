@@ -3,7 +3,7 @@ name: Terraform Workflow
 on:
   pull_request:
     branches:
-      - workflow_branch
+      - main
 
     paths:
       - 'terraform/**'
