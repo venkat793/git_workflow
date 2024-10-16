@@ -32,3 +32,12 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "example" {
     }
   }
 }
+
+resource "aws_s3_bucket_versioning" "versioning_example" {
+  bucket = aws_s3_bucket.my_bucket_1306.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+
+}
