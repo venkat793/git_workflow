@@ -13,12 +13,4 @@ provider "aws" {
 }
 
 
-terraform {
-  backend "s3" {
-    bucket         = "statebucket777"
-    key            = "terraform/state.tfstate"
-    region         = "eu-north-1"
-    dynamodb_table = "table7889"
-    encrypt        = true
-  }
-}
+
