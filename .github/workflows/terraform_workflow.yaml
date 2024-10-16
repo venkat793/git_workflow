@@ -3,17 +3,15 @@ name: Terraform Workflow
 on:
   push:
     branches:
-      - 'venkat/git_workflows'  # Trigger on push to this branch
-    #paths:
-   #   - '.github/workflows/**'
-    #  - 'terraform/**'
-  env:
-  AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY}}"
-  AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY}}"    
+      - 'venkat/git_workflows'  
 
 jobs:
   terraform:
     runs-on: ubuntu-latest
+
+    env:
+      AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY}}"
+      AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY}}"
 
     steps:
       - name: Checkout code
@@ -21,7 +19,7 @@ jobs:
 
       - name: Set up Terraform
         uses: hashicorp/setup-terraform@v2
-       
+        
       - name: Terraform Init
         run: terraform init
 
@@ -35,6 +33,6 @@ jobs:
       - name: Terraform Plan
         run: terraform plan
 
-      - name: Check Terraform Format Status
-        if: steps.fmt.outcome == 'failure'
-        run: echo "Terraform fmt errors are accepted, continuing the workflow."
+      
+
+     
