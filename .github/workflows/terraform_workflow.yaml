@@ -4,9 +4,9 @@ on:
   push:
     branches:
       - 'venkat/git_workflows'  # Trigger on push to this branch
-    paths:
-      - '.github/workflows/**'
-      - 'terraform/**'
+    #paths:
+   #   - '.github/workflows/**'
+    #  - 'terraform/**'
   env:
   AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY}}"
   AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY}}"    
