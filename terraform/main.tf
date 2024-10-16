@@ -13,4 +13,11 @@ provider "aws" {
 }
 
 
+resource "aws_s3_bucket" "bucket899899" {
+  bucket = "bucket899899"
 
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
+}
