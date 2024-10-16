@@ -1,0 +1,40 @@
+name: Terraform Workflow
+
+on:
+  push:
+    branches:
+      - 'venkat/git_workflows'  # Trigger on push to this branch
+    paths:
+      - '.github/workflows/**'
+      - 'terraform/**'
+  env:
+  AWS_ACCESS_KEY: "${{ secrets.AWS_ACCESS_KEY}}"
+  AWS_SECRET_ACCESS_KEY: "${{ secrets.AWS_SECRET_ACCESS_KEY}}"    
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v2
+       
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Format
+        id: fmt
+        run: terraform fmt -check
+
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan
+
+      - name: Check Terraform Format Status
+        if: steps.fmt.outcome == 'failure'
+        run: echo "Terraform fmt errors are accepted, continuing the workflow."
