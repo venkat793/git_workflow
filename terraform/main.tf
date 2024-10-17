@@ -80,7 +80,7 @@ resource "aws_s3_object" "object" {
 
 
 output "s3_website_url" {
-  value       = data.aws_s3_bucket.example.website_endpoint
+  value       = aws_s3_bucket.example.website_endpoint
   description = "The S3 static website hosting URL"
 }
 
