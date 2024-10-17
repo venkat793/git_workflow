@@ -14,7 +14,7 @@ provider "aws" {
 }
 
 data "aws_s3_bucket" "example" {
-  bucket = "www.venkat1011.com"
+  bucket = "www.venkat1010.com"
 
 }
 
