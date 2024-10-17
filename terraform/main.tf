@@ -79,9 +79,9 @@ resource "aws_s3_object" "object" {
 }
 
 
-final "website_url" {
+output "s3_website_url" {
   value       = data.aws_s3_bucket.example.website_endpoint
-  description = "S3 URL"
+  description = "The S3 static website hosting URL"
 }
 
 
