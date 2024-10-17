@@ -42,5 +42,5 @@ jobs:
       - name : Terraform Apply
         run: terraform apply -auto-approve
       - name: Output Website Link
-        run: echo "Website is available at: http://www.venkat777.com.s3-website.eu-north-1.amazonaws.com"
+        run: echo "Website is availablee at: http://www.venkat777.com.s3-website.eu-north-1.amazonaws.com"
       
