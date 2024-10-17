@@ -8,16 +8,16 @@ terraform {
 }
 
 provider "aws" {
-  region     = "eu-north-1"
-  access_key = "AKIAU5LH52UWO6K6QV4R"
+  region = "eu-north-1"
+   access_key = "AKIAU5LH52UWO6K6QV4R"
   secret_key = "yNNUln8aaH5FPfbiV1cmBp2DG93NZqtHYqMid4uc"
 }
 
 resource "aws_s3_bucket" "example" {
-  bucket = "www.venkat7777.com"
-
+  bucket = "www.venkat7979.com"
 
 }
+
 
 
 resource "aws_s3_bucket_public_access_block" "example" {
@@ -68,7 +68,7 @@ locals {
 
 resource "aws_s3_object" "object" {
   for_each = local.files
-  bucket = "www.venkat7777.com"
+  bucket = aws_s3_bucket.example.id
   key    = each.value
   source = "${path.module}/../static-website/${each.value}"
 
