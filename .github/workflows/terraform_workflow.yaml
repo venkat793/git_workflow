@@ -40,7 +40,7 @@ jobs:
       - name : Terraform Apply
         run: terraform apply -auto-approve
 
-      - name: Get S3 Website URL
+      - name: Get S3 Website URLL
         run: terraform output s3_website_url
         
 
