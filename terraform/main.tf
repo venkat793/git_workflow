@@ -13,15 +13,15 @@ provider "aws" {
   secret_key = "yNNUln8aaH5FPfbiV1cmBp2DG93NZqtHYqMid4uc"
 }
 
-resource "aws_s3_bucket" "example" {
-  bucket = "www.venkat1010.com"
+data "aws_s3_bucket" "example" {
+  bucket = "www.venkat1011.com"
 
 }
 
 
 
 resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = aws_s3_bucket.example.id
+  bucket = data.aws_s3_bucket.example.id
 
   block_public_acls       = false
   block_public_policy     = false
@@ -30,7 +30,7 @@ resource "aws_s3_bucket_public_access_block" "example" {
 }
 
 resource "aws_s3_bucket_policy" "allow_access" {
-  bucket = aws_s3_bucket.example.id
+  bucket = data.aws_s3_bucket.example.id
   policy = data.aws_iam_policy_document.allow_public_access.json
 }
 
@@ -55,7 +55,7 @@ data "aws_iam_policy_document" "allow_public_access" {
 }
 
 resource "aws_s3_bucket_website_configuration" "example" {
-  bucket = aws_s3_bucket.example.id
+  bucket = data.aws_s3_bucket.example.id
 
   index_document {
     suffix = "home.html"
@@ -68,7 +68,7 @@ locals {
 
 resource "aws_s3_object" "object" {
   for_each = local.files
-  bucket = aws_s3_bucket.example.id
+  bucket = data.aws_s3_bucket.example.id
   key    = each.value
   source = "${path.module}/../static-website/${each.value}"
 
@@ -80,7 +80,7 @@ resource "aws_s3_object" "object" {
 
 
 output "s3_website_url" {
-  value       = aws_s3_bucket.example.website_endpoint
+  value       = data.aws_s3_bucket.example.website_endpoint
   description = "The S3 static website hosting URL"
 }
 
