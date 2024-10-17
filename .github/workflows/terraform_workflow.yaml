@@ -39,6 +39,11 @@ jobs:
         run: terraform plan
       - name : Terraform Apply
         run: terraform apply -auto-approve
-      - name: Output Website Link
-        run: echo "Website is availablee at:http://www.venkat8080.com.s3-website.eu-north-1.amazonaws.com"
+
+      - name: Final S3 Website URL
+        run: terraform final website_url
+       
+
+      
+      
       

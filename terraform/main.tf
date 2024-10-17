@@ -78,3 +78,10 @@ resource "aws_s3_object" "object" {
   etag = filemd5("${path.module}/../static-website/${each.value}")
 }
 
+
+final "website_url" {
+  value       = data.aws_s3_bucket.example.website_endpoint
+  description = "S3 URL"
+}
+
+
