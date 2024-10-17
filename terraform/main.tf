@@ -19,6 +19,14 @@ data "aws_s3_bucket" "example" {
 }
 
 
+resource "aws_s3_bucket_ownership_controls" "example" {
+  bucket = data.aws_s3_bucket.example.id
+  rule {
+    object_ownership = "ObjectWriter"
+  }
+}
+
+
 
 resource "aws_s3_bucket_public_access_block" "example" {
   bucket = data.aws_s3_bucket.example.id
